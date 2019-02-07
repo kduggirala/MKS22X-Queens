@@ -9,7 +9,23 @@ public class QueenBoardTest {
 			}
 			System.out.println();
 		}
-		q.addQueen(3, 1);
+		q.addQueen(4, 1);
+		System.out.println();
+		for(int[] row : q.board) {
+			for(int i : row) {
+				System.out.print(i + " ");
+			}
+			System.out.println();
+		}
+		q.removeQueen(4, 1);
+		System.out.println();
+		for(int[] row : q.board) {
+			for(int i : row) {
+				System.out.print(i + " ");
+			}
+			System.out.println();
+		}
+		q.addQueen(5, 1);
 		System.out.println();
 		for(int[] row : q.board) {
 			for(int i : row) {
