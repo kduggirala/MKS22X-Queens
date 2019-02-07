@@ -60,6 +60,24 @@ public class QueenBoard {
 		  }
 	  }
 	  
+	  public void removeQueen(int r, int c) {
+		  if (board[r][c] != -1) {
+			  throw new IllegalArgumentException("No queen here");
+		  }
+		  board[r][c] = 0;
+		  for (int i = c + 1; i < n; i++) {
+			  for (int j = 0; j < n; j++) {
+				  //at horizontal
+				  if (j == r) {
+					  board[j][i]--;
+				  }
+				  //at diagonal
+				  if (Math.abs(j - r) == Math.abs(i - c)) {
+					  board[j][i]--;
+				  }
+			  }
+		  }
+	  }
 	  /**
 	  *@return the number of solutions found, and leaves the board filled with only 0's
 	  *@throws IllegalStateException when the board starts with any non-zero value
@@ -72,5 +90,4 @@ public class QueenBoard {
 			  }
 		  }
 	  }
-
 }
