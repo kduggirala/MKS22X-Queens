@@ -1,8 +1,10 @@
 
 public class QueenBoard {
-	private int[] board;
+	private int[][] board;
+	private int n;
 	public QueenBoard(int size) {
-		
+		n = size;
+		board = new int[size][size];
 	}
 	/**
 	  *@return The output string formatted as follows:
@@ -18,7 +20,9 @@ public class QueenBoard {
 	  *(pythonic string notation for clarity, 
 	  *excludes the character up to the *)
 	  */
-	  public String toString(){}
+	  public String toString(){
+		  
+	  }
 
 
 	  
