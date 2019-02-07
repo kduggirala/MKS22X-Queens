@@ -44,6 +44,22 @@ public class QueenBoard {
 	  */
 	  public boolean solve(){}
 	  
+	  private void addQueen(int r, int c) {
+		  board[r][c] = -1;
+		  for (int i = c + 1; i < n; i++) {
+			  for (int j = 0; j < n; j++) {
+				  //at horizontal
+				  if (j == r) {
+					  board[j][i]++;
+				  }
+				  //at diagonal
+				  if (j - r == i - c) {
+					  board[j][i]++;
+				  }
+			  }
+		  }
+	  }
+	  
 	  /**
 	  *@return the number of solutions found, and leaves the board filled with only 0's
 	  *@throws IllegalStateException when the board starts with any non-zero value
