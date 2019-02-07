@@ -21,7 +21,15 @@ public class QueenBoard {
 	  *excludes the character up to the *)
 	  */
 	  public String toString(){
-		  
+		  StringBuffer boardStringBuffer = new StringBuffer();
+		  for (int[] row: board) {
+			  for (int i : row) {
+				  boardStringBuffer.append(i == -1 ? "Q" : "_");
+				  boardStringBuffer.append(" ");
+			  }
+			  boardStringBuffer.append("\n");
+		  }
+		  return boardStringBuffer.toString();
 	  }
 
 
