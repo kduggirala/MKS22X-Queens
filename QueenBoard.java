@@ -1,6 +1,6 @@
 
 public class QueenBoard {
-	private int[][] board;
+	public int[][] board;
 	private int n;
 	public QueenBoard(int size) {
 		n = size;
@@ -44,7 +44,7 @@ public class QueenBoard {
 	  */
 	  public boolean solve(){}
 	  
-	  private void addQueen(int r, int c) {
+	  public void addQueen(int r, int c) {
 		  board[r][c] = -1;
 		  for (int i = c + 1; i < n; i++) {
 			  for (int j = 0; j < n; j++) {
