@@ -53,7 +53,7 @@ public class QueenBoard {
 					  board[j][i]++;
 				  }
 				  //at diagonal
-				  if (j - r == i - c) {
+				  if (Math.abs(j - r) == Math.abs(i - c)) {
 					  board[j][i]++;
 				  }
 			  }
