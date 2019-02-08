@@ -43,7 +43,14 @@ public class QueenBoard {
 
 	  */
 	  public boolean solve(){
-		  return solveHelp(0);
+		  if (!isEmpty()) {
+			  throw new IllegalStateException();
+		  }
+		  boolean solvable = solveHelp(0);
+		  if (!solvable) {
+			  clearBoard();
+		  }
+		  return solvable;
 	  }
 	  
 	  private boolean solveHelp(int c) {
