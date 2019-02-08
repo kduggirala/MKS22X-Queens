@@ -54,10 +54,10 @@ public class QueenBoard {
 	  }
 	  
 	  private boolean solveHelp(int c) {
-		  if (c == board[0].length) {
+		  if (c == n) {
 			  return true;
 		  }
-		  for (int i  = 0; i < board[0].length; i++) {
+		  for (int i  = 0; i < n; i++) {
 			  if (board[i][c] == 0) {
 				  addQueen(i, c);
 				  if (solveHelp(c + 1)) {
@@ -113,15 +113,31 @@ public class QueenBoard {
 		  if (!isEmpty()) {
 			  throw new IllegalStateException();
 		  }
-		  int countSolutions = countSolutionsHelp(0);
+		  int countSolutions = countSolutionsHelp(0, 0);
 		  clearBoard();
 		  return countSolutions;
 	  }
 	  
-	  private int countSolutionsHelp(int count) {
-		  
+	  private int countSolutionsHelp(int c, int count) {
+		  if (c == n - 1) {
+			  for (int i  = 0; i < n; i++) {
+				  if (board[i][c] == 0) {
+					  return ++count;
+				  }
+			  }
+			  return 0;
+		  }
+		  else {
+			  for (int i  = 0; i < n; i++) {
+				  if (board[i][c] == 0) {
+					  addQueen(i, c);
+					  countSolutionsHelp(c+1, count);
+					  removeQueen(i, c);
+				  }
+			  }
+		  }
 	  }
-	  private void clearBoard() {
+	  public void clearBoard() {
 		  for (int i = 0; i < n; i++) {
 			  for (int j = 0; j < n; j++) {
 				  board[i][j] = 0;
