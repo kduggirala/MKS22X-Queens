@@ -2,6 +2,7 @@
 public class QueenBoard {
 	public int[][] board;
 	private int n;
+	private int countSolutions;
 	public QueenBoard(int size) {
 		n = size;
 		board = new int[size][size];
@@ -113,25 +114,25 @@ public class QueenBoard {
 		  if (!isEmpty()) {
 			  throw new IllegalStateException();
 		  }
-		  int countSolutions = countSolutionsHelp(0, 0);
+		  countSolutions = 0;
+		  countSolutionsHelp(0);
 		  clearBoard();
 		  return countSolutions;
 	  }
 	  
-	  private int countSolutionsHelp(int c, int count) {
+	  private void countSolutionsHelp(int c) {
 		  if (c == n - 1) {
 			  for (int i  = 0; i < n; i++) {
 				  if (board[i][c] == 0) {
-					  return ++count;
+					  countSolutions++;
 				  }
 			  }
-			  return 0;
 		  }
 		  else {
 			  for (int i  = 0; i < n; i++) {
 				  if (board[i][c] == 0) {
 					  addQueen(i, c);
-					  countSolutionsHelp(c+1, count);
+					  countSolutionsHelp(c+1);
 					  removeQueen(i, c);
 				  }
 			  }
