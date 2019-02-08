@@ -64,7 +64,7 @@ public class QueenBoard {
 		  return false;
 	  }
 	  
-	  public void addQueen(int r, int c) {
+	  private void addQueen(int r, int c) {
 		  board[r][c] = -1;
 		  for (int i = c + 1; i < n; i++) {
 			  for (int j = 0; j < n; j++) {
@@ -80,7 +80,7 @@ public class QueenBoard {
 		  }
 	  }
 	  
-	  public void removeQueen(int r, int c) {
+	  private void removeQueen(int r, int c) {
 		  if (board[r][c] != -1) {
 			  throw new IllegalArgumentException("No queen here");
 		  }
@@ -102,12 +102,27 @@ public class QueenBoard {
 	  *@return the number of solutions found, and leaves the board filled with only 0's
 	  *@throws IllegalStateException when the board starts with any non-zero value
 	  */
-	  public int countSolutions(){}
+	  public int countSolutions(){
+		  if (!isEmpty()) {
+			  throw new IllegalStateException();
+		  }
+		  clearBoard();
+	  }
 	  private void clearBoard() {
 		  for (int i = 0; i < n; i++) {
 			  for (int j = 0; j < n; j++) {
 				  board[i][j] = 0;
 			  }
 		  }
+	  }
+	  private boolean isEmpty() {
+		  for (int[] row: board) {
+			  for (int i : row) {
+				  if (i != 0) {
+					  return false;
+				  }
+			  }
+		  }
+		  return true;
 	  }
 }
