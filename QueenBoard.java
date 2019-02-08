@@ -42,7 +42,24 @@ public class QueenBoard {
 	  *@throws IllegalStateException when the board starts with any non-zero value
 
 	  */
-	  public boolean solve(){}
+	  public boolean solve(){
+		  return solveHelp(0);
+	  }
+	  
+	  private boolean solveHelp(int c) {
+		  if (c == board[0].length) {
+			  return true;
+		  }
+		  for (int i  = 0; i < board[0].length; i++) {
+			  if (board[i][c] == 0) {
+				  addQueen(i, c);
+				  if (solveHelp(c + 1)) {
+					  return true;
+				  }
+			  }
+		  }
+		  return false;
+	  }
 	  
 	  public void addQueen(int r, int c) {
 		  board[r][c] = -1;
