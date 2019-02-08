@@ -46,21 +46,21 @@ public class QueenBoard {
 		  if (!isEmpty()) {
 			  throw new IllegalStateException();
 		  }
-		  boolean solvable = solveHelp(0);
+		  boolean solvable = solveHelp(0, 0);
 		  if (!solvable) {
 			  clearBoard();
 		  }
 		  return solvable;
 	  }
 	  
-	  private boolean solveHelp(int c) {
+	  private boolean solveHelp(int r, int c) {
 		  if (c == board[0].length) {
 			  return true;
 		  }
-		  for (int i  = 0; i < board[0].length; i++) {
+		  for (int i  = r; i < board[0].length; i++) {
 			  if (board[i][c] == 0) {
 				  addQueen(i, c);
-				  if (solveHelp(c + 1)) {
+				  if (solveHelp(0, c + 1)) {
 					  return true;
 				  }
 				  else {
@@ -112,6 +112,10 @@ public class QueenBoard {
 	  public int countSolutions(){
 		  if (!isEmpty()) {
 			  throw new IllegalStateException();
+		  }
+		  int c = 0;
+		  while (solveHelp(c)) {
+			  
 		  }
 		  clearBoard();
 	  }
