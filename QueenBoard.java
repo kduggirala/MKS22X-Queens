@@ -123,13 +123,8 @@ public class QueenBoard {
 	}
 
 	private void countSolutionsHelp(int c) {
-		if (c == n - 1) {
-			for (int i  = 0; i < n; i++) {
-				if (board[i][c] == 0) {
-					countSolutions++;
-					break;
-				}
-			}
+		if (c == n) {
+			countSolutions++;
 		}
 		else {
 			for (int i  = 0; i < n; i++) {
