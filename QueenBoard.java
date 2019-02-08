@@ -56,6 +56,9 @@ public class QueenBoard {
 				  if (solveHelp(c + 1)) {
 					  return true;
 				  }
+				  else {
+					  removeQueen(i, c);
+				  }
 			  }
 		  }
 		  return false;
