@@ -1,6 +1,6 @@
 
 public class QueenBoard {
-	public int[][] board;
+	private int[][] board;
 	private int n;
 	private int countSolutions;
 	public QueenBoard(int size) {
