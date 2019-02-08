@@ -1,8 +1,9 @@
 
 public class QueenBoardTest {
 	public static void main(String[] args) {
-		QueenBoard q = new QueenBoard(8);
-		q.solve();
-		System.out.println(q.toString());
+		for (int i = 4; i < 21; i++) {
+			QueenBoard q = new QueenBoard(i);
+			System.out.println(q.countSolutions());
+		}
 	}
 }
