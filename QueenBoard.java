@@ -2,11 +2,9 @@
 public class QueenBoard {
 	private int[][] board;
 	private int n;
-	private int countSolutions;
 	public QueenBoard(int size) {
 		n = size;
 		board = new int[size][size];
-		countSolutions = 0;
 	}
 	/**
 	 *@return The output string formatted as follows:
@@ -115,25 +113,24 @@ public class QueenBoard {
 		if (!isEmpty()) {
 			throw new IllegalStateException("The board must be empty before solving");
 		}
-		if(countSolutions == 0) {
-			countSolutionsHelp(0);
-			clearBoard();
-		}
+		int countSolutions = countSolutionsHelp(0);
 		return countSolutions;
 	}
 
-	private void countSolutionsHelp(int c) {
+	private int countSolutionsHelp(int c) {
 		if (c == n) {
-			countSolutions++;
+			return 1;
 		}
 		else {
+			int countSolutions = 0;
 			for (int i  = 0; i < n; i++) {
 				if (board[i][c] == 0) {
 					addQueen(i, c);
-					countSolutionsHelp(c+1);
+					countSolutions += countSolutionsHelp(c+1);
 					removeQueen(i, c);
 				}
 			}
+			return countSolutions;
 		}
 	}
 	public void clearBoard() {
