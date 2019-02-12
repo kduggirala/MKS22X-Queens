@@ -52,7 +52,11 @@ public class QueenBoard {
 		}
 		return solvable;
 	}
-
+	/**
+	 * Searches the columns of the board and returns true if a solution is found
+	 * @param c column at which the algorithm searches for a solution
+	 * @return true if a solution is possible with the preceding board configuration
+	 */
 	private boolean solveHelp(int c) {
 		if (c == n) {
 			return true;
@@ -70,7 +74,9 @@ public class QueenBoard {
 		}
 		return false;
 	}
-
+	/*
+	 * Adds a queen to the board at board[r][c] and marks all the threatened spaces
+	 */
 	private void addQueen(int r, int c) {
 		board[r][c] = -1;
 		for (int i = c + 1; i < n; i++) {
@@ -86,7 +92,10 @@ public class QueenBoard {
 			}
 		}
 	}
-
+	/**
+	 * Removes a queen from the board at board[r][c] and unmarks all threatened spaces.
+	 * @throws IllegalArgumentException if there is no queen at the space r, c
+	 */
 	private void removeQueen(int r, int c) {
 		if (board[r][c] != -1) {
 			throw new IllegalArgumentException("No queen here");
@@ -116,7 +125,11 @@ public class QueenBoard {
 		int countSolutions = countSolutionsHelp(0);
 		return countSolutions;
 	}
-
+	/**
+	 * Returns the number of solutions possible at a column c given the preceding board configuration
+	 * @param c the column of the board being searched for solutions
+	 * @return the number of possible solutions with the preceding board configuration
+	 */
 	private int countSolutionsHelp(int c) {
 		if (c == n) {
 			return 1;
@@ -133,6 +146,9 @@ public class QueenBoard {
 			return countSolutions;
 		}
 	}
+	/*
+	 * Sets all values on the board to zero
+	 */
 	public void clearBoard() {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
@@ -140,6 +156,9 @@ public class QueenBoard {
 			}
 		}
 	}
+	/*
+	 * Checks whether the board is all zeros
+	 */
 	private boolean isEmpty() {
 		for (int[] row: board) {
 			for (int i : row) {
